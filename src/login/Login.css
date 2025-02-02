@@ -1,0 +1,66 @@
+.glassmorphism {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 40px;
+  border-radius: 20px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  width: 300px;
+  text-align: center;
+  color: #fff;
+}
+
+.input-container {
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.icon {
+  color: #fff;
+  margin-right: 10px;
+}
+
+input {
+  background: none;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: 100%;
+}
+
+.submit-btn {
+  background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.google-btn {
+  background: #db4437;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 100%;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.toggle-text {
+  color: #fff;
+  cursor: pointer;
+  text-decoration: underline;
+}

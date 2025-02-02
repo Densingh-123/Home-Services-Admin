@@ -1,0 +1,108 @@
+/* Sidebar Styles */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    border-radius: 0 50px 50px 0;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: white;
+    box-shadow: 10px 0 20px rgba(0, 0, 0, 0.3);
+    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+  }
+  
+  /* Sidebar Header */
+  .sidebar-header {
+    padding: 20px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 0 50px 0 0;
+  }
+  
+  .sidebar-header h2 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 700;
+  }
+  
+  /* Sidebar Menu */
+  .sidebar-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Menu Items */
+  .menu-item {
+    padding: 15px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-left: 4px solid transparent;
+    border-radius: 25px 0 0 25px;
+    margin: 5px 10px;
+  }
+  
+  .menu-item a {
+    text-decoration: none;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    width: 100%;
+  }
+  
+  .menu-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #3498db;
+    transform: translateX(5px);
+  }
+  
+  .menu-item.active {
+    background: rgba(255, 255, 255, 0.1);
+    border-left: 4px solid #3498db;
+    font-weight: 600;
+  }
+  
+  /* Logout Item */
+  .menu-item.logout {
+    
+    margin-top: 100;
+    border-radius: 10;
+    background: rgba(255, 0, 0, 0.1);
+  }
+  
+  .menu-item.logout:hover {
+    background: rgba(255, 0, 0, 0.2);
+    border-left: 4px solid #e74c3c;
+  }
+  
+  .menu-item.logout.active {
+    background: rgba(255, 0, 0, 0.2);
+    border-left: 4px solid #e74c3c;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .sidebar {
+      width: 200px;
+      border-radius: 0 40px 40px 0;
+    }
+  
+    .menu-item {
+      padding: 12px 15px;
+      font-size: 14px;
+    }
+  }
+  

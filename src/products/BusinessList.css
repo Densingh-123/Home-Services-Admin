@@ -1,0 +1,122 @@
+/* General Layout */
+.business-list-page {
+    padding: 20px;
+    background-color: #f8f8f8;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .business-list-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+  }
+  
+  /* Business Card */
+  .business-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    transition: transform 0.3s ease;
+  }
+  
+  .business-card:hover {
+    transform: translateY(-5px);
+  }
+  
+  .business-image img {
+    width: 100%;
+    border-radius: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .business-details h2 {
+    font-size: 24px;
+    color: #3498db;
+    margin-bottom: 10px;
+  }
+  
+  .business-details p {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .comments-section {
+    margin-top: 15px;
+  }
+  
+  .comment {
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+  .comment p {
+    margin: 0;
+  }
+  
+  .comment small {
+    color: #888;
+  }
+  
+  /* Actions */
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+  }
+  
+  .actions button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+  
+  .actions button:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Edit Mode */
+  .edit-mode .form-group {
+    margin-bottom: 15px;
+  }
+  
+  .edit-mode label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+  }
+  
+  .edit-mode input,
+  .edit-mode textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    color: black;
+  }
+  
+  .edit-mode textarea {
+    resize: vertical;
+    min-height: 100px;
+  }
+  
+  .edit-mode .actions {
+    justify-content: flex-start;
+    gap: 10px;
+  }
