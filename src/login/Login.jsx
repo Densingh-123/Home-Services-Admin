@@ -1,15 +1,14 @@
-import React, { useState } from 'react';
-import { Canvas } from '@react-three/fiber';
-import { OrbitControls, Text } from '@react-three/drei';
+import React, { useState, useEffect } from 'react';
 import { auth, signInWithGoogle, createUserWithEmailAndPassword, signInWithEmailAndPassword } from '../firebase';
 import { useNavigate } from 'react-router-dom';
-import { FaGoogle, FaEnvelope, FaLock, FaUser } from 'react-icons/fa';
-import './Login.css'; // Add custom CSS for styling
+import { FaGoogle, FaEnvelope, FaLock, FaBars } from 'react-icons/fa';
+import './Login.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignUp, setIsSignUp] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -38,71 +37,70 @@ const Login = () => {
     }
   };
 
-  return (
-    <div style={{ display: 'flex', width: '100vw', height: '100vh' ,overflow:'hidden',position:'relative',left:-155,top:-30}}>
-      {/* Left Side: Three.js Animation */}
-      <div style={{ flex: 1.5, background: '#1e1e2f',marginLeft:-120 }}>
-        <Canvas>
-          <ambientLight intensity={0.5} />
-          <pointLight position={[10, 10, 10]} />
-          <OrbitControls enableZoom={false} />
-          <Text
-            position={[0, 2, 0]}
-            fontSize={1}
-            color="white"
-            anchorX="center"
-            anchorY="middle"
-            style={{with:400}}
-          >
-            Home Services
-          </Text>
-          <Text
-            position={[0, 0, 0]}
-            fontSize={0.5}
-            color="white"
-            anchorX="center"
-            anchorY="middle"
-          >
-            Cleaning | Washing | Gym Training | Car Care
-          </Text>
-        </Canvas>
-      </div>
+  const handleOutsideClick = (e) => {
+    if (isSidebarOpen && !e.target.closest('.sidebar')) {
+      setIsSidebarOpen(false);
+    }
+  };
 
-      {/* Right Side: Login Form */}
-      <div style={{ flex: 1, display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#2a2a40' }}>
-        <div style={{ background: 'rgba(255, 255, 255, 0.1)', padding: '40px', borderRadius: '20px', backdropFilter: 'blur(10px)', boxShadow: '0 8px 32px 0 rgba(31, 38, 135, 0.37)', border: '1px solid rgba(255, 255, 255, 0.18)', width: '300px', textAlign: 'center' }}>
-          <h2 style={{ color: '#fff', marginBottom: '20px' }}>{isSignUp ? 'Sign Up' : 'Login'}</h2>
-          <form onSubmit={handleSubmit} >
-            <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '10px', padding: '10px', }}>
-              <FaEnvelope style={{ color: '#fff', marginRight: '10px' }} />
+  useEffect(() => {
+    document.addEventListener('click', handleOutsideClick);
+    return () => document.removeEventListener('click', handleOutsideClick);
+  }, [isSidebarOpen]);
+
+  return (
+    <div className="login-page" style={{ backgroundImage: "url('/background.jpg')" }}>
+      <button className="menu-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
+        <FaBars />
+      </button>
+
+      {isSidebarOpen && (
+        <div className="sidebar">
+          <ul>
+            <li onClick={() => setIsSidebarOpen(false)}>Home</li>
+            <li onClick={() => setIsSidebarOpen(false)}>About</li>
+            <li onClick={() => setIsSidebarOpen(false)}>Services</li>
+            <li onClick={() => setIsSidebarOpen(false)}>Contact</li>
+          </ul>
+        </div>
+      )}
+
+      <div className="login-content">
+        <div className="form-container">
+          <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
+          <form onSubmit={handleSubmit}>
+            <div className="input-container">
+              <FaEnvelope className="icon" />
               <input
                 type="email"
                 placeholder="Email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                style={{ background: 'none', border: 'none', color: '#fff', outline: 'none', width: '100%' }}
                 required
               />
             </div>
-            <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center', background: 'rgba(255, 255, 255, 0.1)', borderRadius: '10px', padding: '10px' }}>
-              <FaLock style={{ color: '#fff', marginRight: '10px' }} />
+
+            <div className="input-container">
+              <FaLock className="icon" />
               <input
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                style={{ background: 'none', border: 'none', color: '#fff', outline: 'none', width: '100%' }}
                 required
               />
             </div>
-            <button type="submit" style={{ background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)', border: 'none', color: 'white', padding: '10px 20px', borderRadius: '10px', cursor: 'pointer', fontSize: '16px', width: '100%', marginBottom: '10px' }}>
+
+            <button type="submit" className="submit-btn">
               {isSignUp ? 'Sign Up' : 'Login'}
             </button>
           </form>
-          <button onClick={handleGoogleSignIn} style={{ background: '#db4437', border: 'none', color: 'white', padding: '10px 20px', borderRadius: '10px', cursor: 'pointer', fontSize: '16px', width: '100%', marginBottom: '10px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-            <FaGoogle style={{ marginRight: '10px' }} /> Sign in with Google
+
+          <button onClick={handleGoogleSignIn} className="google-btn">
+            <FaGoogle /> Sign in with Google
           </button>
-          <p style={{ color: '#fff', cursor: 'pointer' }} onClick={() => setIsSignUp(!isSignUp)}>
+
+          <p className="toggle-text" onClick={() => setIsSignUp(!isSignUp)}>
             {isSignUp ? 'Already have an account? Login' : 'Don’t have an account? Sign Up'}
           </p>
         </div>

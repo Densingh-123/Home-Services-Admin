@@ -25,7 +25,7 @@ const Cart = () => {
   return (
     <>
       <SideBar />
-      <div className="cart-container" style={{position:'relative',left:120}}>
+      <div className="cart-container">
         <h1 className="cart-title">Your Cart</h1>
         {cartItems.length > 0 ? (
           <div className="cart-items-grid">
@@ -39,7 +39,6 @@ const Cart = () => {
                     <p><span className="detail-label">Address:</span> {item.address}</p>
                     <p><span className="detail-label">Contact:</span> {item.contact}</p>
                     <p><span className="detail-label">Email:</span> {item.userEmail}</p>
-                    
                   </div>
                   <button onClick={() => removeItem(item.id)} className="remove-button">
                     Remove

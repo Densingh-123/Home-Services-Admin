@@ -1,109 +1,112 @@
-/* General Layout */
 .users-page {
-    display: flex;
-    background-color: #f8f8f8;
-    min-height: 100vh;
-    margin-top: 40;
-  }
-  
-  /* Sidebar Styles */
+  display: flex;
+  background-color: #f8f8f8;
+  min-height: 100vh;
+  position: relative;
+}
+
+.hamburger {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #3498db;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.users-container {
+  margin-left: 260px;
+  padding: 20px;
+  width: calc(100% - 260px);
+  transition: margin-left 0.3s ease;
+}
+
+.users-container h2 {
+  display: flex;
+  align-items: center;
+  font-size: 30px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+.header-icon {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.users-table {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.user-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+.user-row:hover {
+  background-color: #eaeaea;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+}
+
+.user-icon {
+  margin-right: 10px;
+  color: #3498db;
+}
+
+.user-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+.user-email {
+  font-size: 16px;
+  color: #7f8c8d;
+  font-weight: 400;
+}
+
+@media (max-width: 768px) {
   .users-container {
- 
-    margin-left: 260px; /* Make space for Sidebar */
-    padding: 20px;
-    width: calc(100% - 260px);
+    margin-left: 0;
+    width: 100%;
   }
-  
-  /* Header */
-  .users-container h2 {
-    display: flex;
-    align-items: center;
-    font-size: 30px;
-    font-weight: 600;
-    margin-bottom: 20px;
-    color: #2c3e50;
-  }
-  
-  .header-icon {
-    margin-right: 10px;
-    color: #3498db;
-  }
-  
-  /* Table Styles */
-  .users-table {
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-  }
-  
-  /* Row Styles */
+
   .user-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 15px;
-    border-bottom: 1px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    transition: background-color 0.3s ease;
+    flex-direction: column;
+    align-items: flex-start;
   }
-  
-  .user-row:hover {
-    background-color: #eaeaea;
-  }
-  
-  /* User Info Styles */
+
   .user-info {
-    display: flex;
-    align-items: center;
+    margin-bottom: 10px;
   }
-  
-  .user-icon {
-    margin-right: 10px;
-    color: #3498db;
-  }
-  
-  /* Name Styles */
-  .user-name {
-    font-size: 18px;
-    font-weight: 600;
-    color: #2c3e50;
-  }
-  
-  /* Email Styles */
+
+  .user-name,
   .user-email {
-    font-size: 16px;
-    color: #7f8c8d;
-    font-weight: 400;
+    font-size: 14px;
   }
-  
-  /* Responsive Design */
-  @media (max-width: 768px) {
-    .users-container {
-      margin-left: 0;
-      width: 100%;
-    }
-  
-    .user-row {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-  
-    .user-info {
-      margin-bottom: 10px;
-    }
-  
-    .user-name,
-    .user-email {
-      font-size: 14px;
-    }
-  }
-  
-  /* No Data Found */
-  .users-table p {
-    text-align: center;
-    font-size: 18px;
-    color: #7f8c8d;
-    margin-top: 20px;
-  }
+}
+
+.users-table p {
+  text-align: center;
+  font-size: 18px;
+  color: #7f8c8d;
+  margin-top: 20px;
+}

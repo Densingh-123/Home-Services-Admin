@@ -1,20 +1,88 @@
-.glassmorphism {
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+}
+
+.login-page {
+  max-height: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+  width: 100%;
+ 
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-toggle {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background: transparent;
+  border: none;
+  color: #fff;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.7); 
+  width: 250px;
+  height: 100%;
+  padding: 20px;
+  z-index: 10;
+  transition: all 0.3s ease-in-out;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  color: #fff;
+  cursor: pointer;
+}
+
+.login-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  position: relative;
+  z-index: 20;
+  width: 100%;
+}
+
+.form-container {
   background: rgba(255, 255, 255, 0.1);
-  padding: 40px;
   border-radius: 20px;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  width: 300px;
+  padding: 40px;
+  width: 90%;
+  max-width: 500px;
   text-align: center;
   color: #fff;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 .input-container {
   margin-bottom: 15px;
   display: flex;
   align-items: center;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
   padding: 10px;
 }
@@ -32,11 +100,11 @@ input {
   width: 100%;
 }
 
-.submit-btn {
+.submit-btn, .google-btn {
   background: linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%);
   border: none;
   color: white;
-  padding: 10px 20px;
+  padding: 15px 20px;
   border-radius: 10px;
   cursor: pointer;
   font-size: 16px;
@@ -46,21 +114,50 @@ input {
 
 .google-btn {
   background: #db4437;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-size: 16px;
-  width: 100%;
-  margin-bottom: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 .toggle-text {
   color: #fff;
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .login-content {
+    padding: 20px;
+  }
+
+  .form-container {
+    padding: 30px;
+    width: 100%;
+  }
+
+  .sidebar {
+    width: 200px;
+  }
+
+  .menu-toggle {
+    top: 10px;
+    left: 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .form-container {
+    padding: 20px;
+    width: 90%;
+    max-width: 100%;
+  }
+
+  .input-container {
+    margin-bottom: 10px;
+  }
+
+  .submit-btn, .google-btn {
+    font-size: 14px;
+  }
+
+  .menu-toggle {
+    font-size: 20px;
+  }
 }

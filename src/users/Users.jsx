@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import SlideBar from '../sidebar/SideBar';
-import { db } from '../firebase'; // Import Firebase configuration
-import { collection, getDocs } from 'firebase/firestore'; // Import Firestore functions
-import { FaUser, FaEnvelope, FaUsers } from 'react-icons/fa'; // Import icons
-import './Users.css'; // Importing custom CSS for styling
+import { db } from '../firebase';
+import { collection, getDocs } from 'firebase/firestore';
+import { FaUser, FaEnvelope, FaUsers, FaBars } from 'react-icons/fa';
+import './Users.css';
 
 const Users = () => {
-  const [users, setUsers] = useState([]); // State to store users data
+  const [users, setUsers] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -14,20 +15,33 @@ const Users = () => {
         const querySnapshot = await getDocs(collection(db, 'users'));
         const usersList = [];
         querySnapshot.forEach(doc => {
-          usersList.push({ id: doc.id, ...doc.data() }); // Push user data to array
+          usersList.push({ id: doc.id, ...doc.data() });
         });
-        setUsers(usersList); // Set state with users data
+        setUsers(usersList);
       } catch (error) {
-        console.error('Error fetching users:', error); // Log any errors
+        console.error('Error fetching users:', error);
       }
     };
 
-    fetchUsers(); // Fetch users when component mounts
+    fetchUsers();
   }, []);
 
+  const handleToggleSidebar = () => {
+    setSidebarOpen(!sidebarOpen);
+  };
+
+  const handleCloseSidebar = () => {
+    if (sidebarOpen) {
+      setSidebarOpen(false);
+    }
+  };
+
   return (
-    <div className="users-page">
-      <SlideBar />
+    <div className="users-page" onClick={handleCloseSidebar}>
+      <button className="hamburger" onClick={(e) => {e.stopPropagation(); handleToggleSidebar();}}>
+        <FaBars />
+      </button>
+      <SlideBar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
       <div className="users-container">
         <h2>
           <FaUsers className="header-icon" /> Users List

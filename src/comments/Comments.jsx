@@ -1,22 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { db } from "../firebase"; // Import your Firebase configuration
+import { db } from "../firebase";
 import { collection, getDocs } from "firebase/firestore";
-import "./Comments.css"; // Import your CSS file for styling
-import { FaStar, FaUser, FaComment } from "react-icons/fa"; // Import icons from react-icons
+import "./Comments.css";
+import { FaStar, FaUser, FaComment } from "react-icons/fa";
 import SideBar from "../sidebar/SideBar";
 
 const App = () => {
-  const [comments, setComments] = useState([]); // State to store all comments
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch all businesses
         const businessCollection = collection(db, "BusinessList");
         const businessSnapshot = await getDocs(businessCollection);
 
-        // Extract all comments from all businesses
         const allComments = [];
         businessSnapshot.docs.forEach((doc) => {
           const businessData = doc.data();
@@ -24,15 +22,14 @@ const App = () => {
             businessData.comments.forEach((comment) => {
               allComments.push({
                 ...comment,
-                businessName: businessData.name, // Add business name to the comment
-                businessImage: businessData.image, // Add business image to the comment
+                businessName: businessData.name,
+                businessImage: businessData.image,
               });
             });
           }
         });
 
-        // Sort comments by timestamp (or any other field) to show new comments at the top
-        allComments.sort((a, b) => b.timestamp - a.timestamp); // Assuming each comment has a `timestamp` field
+        allComments.sort((a, b) => b.timestamp - a.timestamp);
 
         setComments(allComments);
       } catch (error) {
@@ -57,7 +54,7 @@ const App = () => {
   return (
     <div className="comments-container">
       <SideBar />
-      <h1 className="comments-title" style={{position:'relative',left:30}}>
+      <h1 className="comments-title">
         <FaComment /> All Comments
       </h1>
       {comments.length > 0 ? (
@@ -82,7 +79,6 @@ const App = () => {
                 </div>
               </div>
               <p className="comment-text">{comment.comment}</p>
-              {/* Display business name and image (optional) */}
               <div className="comment-business-info">
                 {comment.businessImage && (
                   <img
