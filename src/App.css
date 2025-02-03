@@ -3,9 +3,16 @@
   margin: 0 auto;
   padding: 2rem;
   text-align: center;
+  overflow-y: scroll !important;
+  scrollbar-width: none; /* Hides scrollbar in Firefox */
+  -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
 }
 
-*{
-  margin:0;
+#root::-webkit-scrollbar {
+  display: none; /* Hides scrollbar in Chrome, Safari, and Edge */
+}
+
+* {
+  margin: 0;
   padding: 0;
 }

@@ -9,6 +9,7 @@ import Products from "./products/Products";
 import Liked from "./liked/Liked";
 import Cart from './cart/Cart'
 import Comments from "./comments/Comments";
+import Add from './add/Add'
 function App() {
   const [count, setCount] = useState(0);
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/user" element={<Users/>}/>
         <Route path="/product" element={<Products/>}/>
         <Route path="/likes" element={<Liked/>}/>
+        <Route path="/add" element={<Add/>}/>
 <Route path="/cart" element={<Cart/>}/>
 <Route path="/comments" element={<Comments/>}/>
       </Routes>

@@ -66,7 +66,7 @@ const BusinessList = () => {
   };
 
   return (
-    <div className="business-list-page" style={{position:'relative',left:120}}>
+    <div className="business-list-page" style={{position:'relative',left:20}}>
     <SideBar/>
       <h1>Business List</h1>
       <div className="business-list-container">

@@ -31,7 +31,15 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   display: flex;
   flex-direction: column;
+  width: 400px; /* Fixed missing unit */
+  max-width: 100%; /* Ensures responsiveness */
 }
+
+.cart-item-card:hover {
+  transform: scale(1.03); /* Slight hover effect */
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
 
 .cart-item-card:hover {
   transform: translateY(-5px);

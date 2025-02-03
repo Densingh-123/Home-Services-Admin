@@ -38,9 +38,9 @@ const Users = () => {
 
   return (
     <div className="users-page" onClick={handleCloseSidebar}>
-      <button className="hamburger" onClick={(e) => {e.stopPropagation(); handleToggleSidebar();}}>
+      {/* <button className="hamburger" onClick={(e) => {e.stopPropagation(); handleToggleSidebar();}}>
         <FaBars />
-      </button>
+      </button> */}
       <SlideBar isOpen={sidebarOpen} onClose={handleCloseSidebar} />
       <div className="users-container">
         <h2>

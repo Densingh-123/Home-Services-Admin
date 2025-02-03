@@ -37,73 +37,46 @@ const Login = () => {
     }
   };
 
-  const handleOutsideClick = (e) => {
-    if (isSidebarOpen && !e.target.closest('.sidebar')) {
-      setIsSidebarOpen(false);
-    }
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleOutsideClick);
-    return () => document.removeEventListener('click', handleOutsideClick);
-  }, [isSidebarOpen]);
-
   return (
-    <div className="login-page" style={{ backgroundImage: "url('/background.jpg')" }}>
-      <button className="menu-toggle" onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-        <FaBars />
-      </button>
+    <div className="login-page">
+      <div className="image-container"></div>
+      <div className="form-container">
+        <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="input-container">
+            <FaEnvelope className="icon" />
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
 
-      {isSidebarOpen && (
-        <div className="sidebar">
-          <ul>
-            <li onClick={() => setIsSidebarOpen(false)}>Home</li>
-            <li onClick={() => setIsSidebarOpen(false)}>About</li>
-            <li onClick={() => setIsSidebarOpen(false)}>Services</li>
-            <li onClick={() => setIsSidebarOpen(false)}>Contact</li>
-          </ul>
-        </div>
-      )}
+          <div className="input-container">
+            <FaLock className="icon" />
+            <input
+              type="password"
+              placeholder="Password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
 
-      <div className="login-content">
-        <div className="form-container">
-          <h2>{isSignUp ? 'Sign Up' : 'Login'}</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="input-container">
-              <FaEnvelope className="icon" />
-              <input
-                type="email"
-                placeholder="Email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </div>
-
-            <div className="input-container">
-              <FaLock className="icon" />
-              <input
-                type="password"
-                placeholder="Password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                required
-              />
-            </div>
-
-            <button type="submit" className="submit-btn">
-              {isSignUp ? 'Sign Up' : 'Login'}
-            </button>
-          </form>
-
-          <button onClick={handleGoogleSignIn} className="google-btn">
-            <FaGoogle /> Sign in with Google
+          <button type="submit" className="submit-btn">
+            {isSignUp ? 'Sign Up' : 'Login'}
           </button>
+        </form>
 
-          <p className="toggle-text" onClick={() => setIsSignUp(!isSignUp)}>
-            {isSignUp ? 'Already have an account? Login' : 'Don’t have an account? Sign Up'}
-          </p>
-        </div>
+        <button onClick={handleGoogleSignIn} className="google-btn">
+          <FaGoogle /> Sign in with Google
+        </button>
+
+        <p className="toggle-text" onClick={() => setIsSignUp(!isSignUp)}>
+          {isSignUp ? 'Already have an account? Login' : 'Don’t have an account? Sign Up'}
+        </p>
       </div>
     </div>
   );

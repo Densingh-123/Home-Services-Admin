@@ -64,6 +64,7 @@ const App = () => {
               <div className="comment-header">
                 {comment.image && (
                   <img
+                  style={{marginTop:-100}}
                     src={comment.image}
                     alt={comment.userId}
                     className="comment-user-image"

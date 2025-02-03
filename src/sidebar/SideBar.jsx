@@ -39,6 +39,11 @@ const SideBar = () => {
     }
   };
 
+  // Logic for going back to the previous page
+  const handleGoBack = () => {
+    navigate(-1); // This navigates the user back to the previous page
+  };
+
   return (
     <>
       <button className="menu-toggle" onClick={() => setIsOpen(!isOpen)}>
@@ -52,6 +57,9 @@ const SideBar = () => {
         <ul className="sidebar-menu">
           <li className={`menu-item ${activeItem === "/user" ? "active" : ""}`}>
             <Link to="/user">👤 Users</Link>
+          </li>
+          <li className={`menu-item ${activeItem === "/add" ? "active" : ""}`}>
+            <Link to="/add">↩️ ADD</Link>
           </li>
           <li className={`menu-item ${activeItem === "/product" ? "active" : ""}`}>
             <Link to="/product">🛍️ Products</Link>
@@ -69,6 +77,13 @@ const SideBar = () => {
             <span>🚪 Logout</span>
           </li>
         </ul>
+        
+        {/* Go Back button */}
+        {location.pathname === "/add" && (
+          <button onClick={handleGoBack} className="go-back-btn">
+            ↩️ Go Back
+          </button>
+        )}
       </div>
     </>
   );
